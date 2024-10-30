@@ -1,5 +1,5 @@
 import 'package:new_staff_management/data/apis/apiClient.dart';
-import 'package:new_staff_management/presentation/people/models/person.dart';
+import 'package:new_staff_management/presentation/people_roles/people/models/person.dart';
 
 class PersonRepository {
   final ApiClient apiClient = ApiClient();

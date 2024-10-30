@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Home Page'),
       ),
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: 200,
           height: 60,
           child: NeumorphicButton(

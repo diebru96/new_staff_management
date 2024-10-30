@@ -14,6 +14,7 @@ class NeumorphicButton extends StatelessWidget {
   final Widget? child;
   final Color? color;
   bool internal = false;
+  BuildContext? buttonContext;
   NeumorphicButton(
       {super.key,
       this.onPressed,
@@ -47,11 +48,12 @@ class NeumorphicButton extends StatelessWidget {
                   color: color ?? Theme.of(context).scaffoldBackgroundColor,
                   boxShadow: [
                     BoxShadow(
-                        color: internal
+                        color: state.isTapped
                             ? Colors.white
                             : Colors.white.withOpacity(0.85),
                         spreadRadius: state.isTapped ? 1.0 : -3,
-                        offset: internal ? state.distance : -state.distance,
+                        offset:
+                            state.isTapped ? state.distance : -state.distance,
                         blurRadius: 6.0,
                         inset: state.isTapped),
                     BoxShadow(

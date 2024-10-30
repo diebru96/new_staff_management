@@ -16,4 +16,11 @@ class ButtonCubit extends Cubit<ButtonState> {
   void onHover(bool hovered) => emit(state.copyWith(
       isHovered: hovered,
       distance: hovered ? const Offset(10, 10) : const Offset(7, 7)));
+
+  void isTapped(bool tapped) =>
+      Future.delayed(const Duration(milliseconds: 70), () {
+        print("ISTAPPED " + tapped.toString());
+
+        emit(state.copyWith(isTapped: tapped));
+      });
 }

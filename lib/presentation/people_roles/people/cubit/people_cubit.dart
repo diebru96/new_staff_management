@@ -1,7 +1,7 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:new_staff_management/common/helper/api_helpers/status.enum.dart';
-import 'package:new_staff_management/presentation/people/cubit/people_state.dart';
-import 'package:new_staff_management/presentation/people/models/person_repository.dart';
+import 'package:new_staff_management/presentation/people_roles/people/cubit/people_state.dart';
+import 'package:new_staff_management/presentation/people_roles/people/models/person_repository.dart';
 
 class PeopleCubit extends HydratedCubit<PeopleState> {
   PeopleCubit(this._personRepository) : super(const PeopleState());

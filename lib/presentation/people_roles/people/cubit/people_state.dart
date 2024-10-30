@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:new_staff_management/common/helper/api_helpers/status.enum.dart';
-import 'package:new_staff_management/presentation/people/models/person.dart';
+import 'package:new_staff_management/presentation/people_roles/people/models/person.dart';
 
 part 'people_state.freezed.dart';
 part 'people_state.g.dart';
