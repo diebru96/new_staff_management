@@ -10,11 +10,8 @@ class PersonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PeopleCubit, PeopleState>(builder: (context, state) {
-      print(state.people.toString());
-
       Person person =
           state.people.where((p) => p.id.toString() == personId).first;
-      print(person);
 
       return Scaffold(
         appBar: AppBar(

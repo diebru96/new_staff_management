@@ -26,7 +26,9 @@ class MySideBar extends StatelessWidget {
               height: MediaQuery.of(context).size.height - 20,
               width: !state.collapsed
                   ? 78
-                  : MediaQuery.of(context).size.width / 8.5,
+                  : (MediaQuery.of(context).size.width / 8.5) > 150
+                      ? (MediaQuery.of(context).size.width / 8.5)
+                      : 78,
               margin: const EdgeInsets.fromLTRB(15, 10, 10, 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(!state.collapsed ? 40 : 20),
@@ -47,10 +49,9 @@ class MySideBar extends StatelessWidget {
                   ...BarValues.barValues.map((bv) => element(
                       bv.icon, bv.text, !state.collapsed, bv.route, context,
                       selected: GoRouterState.of(context)
-                              .uri
-                              .toString()
-                              .compareTo(bv.route) ==
-                          0)),
+                          .uri
+                          .toString()
+                          .contains(bv.route))),
                 ],
               ),
             ),
@@ -70,6 +71,7 @@ class MySideBar extends StatelessWidget {
             height: 70,
             width: 70,
             child: NeumorphicButton(
+              internal: selected,
               padding: const EdgeInsets.all(8),
               margin: const EdgeInsets.fromLTRB(15, 10, 5, 10),
               key: ValueKey(text),
@@ -77,12 +79,9 @@ class MySideBar extends StatelessWidget {
                 context.go(route);
               },
               child: Center(
-                  child: SvgPicture.asset(icon,
-                      color: selected ? AppColors.secondary : AppColors.primary,
-                      theme: SvgTheme(
-                        currentColor:
-                            selected ? AppColors.secondary : AppColors.primary,
-                      ))),
+                  child: SvgPicture.asset(
+                icon,
+              )),
             )),
         if (!showText)
           Expanded(

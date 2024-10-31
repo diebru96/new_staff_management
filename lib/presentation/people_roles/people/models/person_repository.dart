@@ -6,7 +6,6 @@ class PersonRepository {
   Future<List<Person>> getPeople() async {
     final people = await apiClient.getPeople();
     if (people != null) {
-      print("PEOPLE: $people");
       return people.map((p) => Person.fromJson(p)).toList();
     }
     return [];

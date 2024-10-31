@@ -9,7 +9,7 @@ class PeopleCubit extends HydratedCubit<PeopleState> {
   final PersonRepository _personRepository;
 
   Future<void> fetchPeople() async {
-    print("FERTCH PEOPLEEEE");
+    if (state.people.isNotEmpty) return;
     emit(state.copyWith(status: FutureState.loading));
 
     try {

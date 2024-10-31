@@ -49,7 +49,8 @@ class PeoplePageWeb extends StatelessWidget {
                               height: 50,
                               child: NeumorphicButton(
                                 onPressed: () {
-                                  context.go('/people/${person.id}');
+                                  context
+                                      .go('/people_roles/people/${person.id}');
                                 },
                                 child: const Center(child: Text('Detail')),
                               ),

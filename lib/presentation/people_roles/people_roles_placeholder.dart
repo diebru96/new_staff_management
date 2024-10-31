@@ -10,21 +10,37 @@ class PeopleRoles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: null,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            context.go('/people_roles/people');
+          },
+          child: Icon(Icons.add),
+          backgroundColor: AppColors.primary,
+        ),
         body: Column(
           children: [
-            Container(
+            SizedBox(
               height: 100,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Dipendenti',
+                    'Questa pagina non esiste',
                     style: TextStyle(
                         fontSize: 24, color: Theme.of(context).primaryColor),
                   )
                 ],
               ),
             ),
-            Expanded(child: Container())
+            Expanded(
+                child: Center(
+                    child: InkWell(
+              onTap: () => context.go('/people_roles/people'),
+              child: const Text(
+                "Vai alla sezione Dipendenti",
+                style: TextStyle(fontSize: 24, color: Colors.blue),
+              ),
+            )))
           ],
         ));
   }
