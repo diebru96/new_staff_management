@@ -29,7 +29,7 @@ class PeopleCubit extends HydratedCubit<PeopleState> {
 
   filterPeople({required String filter, required String field}) {
     List<Person> people = state.people;
-    Map<String, String> searchvals = state.searchValues;
+    Map<String, String> searchvals = Map.from(state.searchValues);
     searchvals[field] = filter;
     print("SEARCHVALS " + searchvals.toString());
     emit(state.copyWith(searchValues: searchvals));
