@@ -10,6 +10,7 @@ class PeopleState with _$PeopleState {
   const factory PeopleState({
     @Default([]) List<Person> people,
     @Default([]) List<Person> peopleFiltered,
+    @Default({}) Map<String, String> searchValues,
     @Default(FutureState.initial) FutureState status,
   }) = _PeopleState;
 

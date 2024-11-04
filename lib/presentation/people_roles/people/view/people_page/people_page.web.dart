@@ -128,7 +128,7 @@ class PeoplePageWeb extends StatelessWidget {
   headerCell(String text, String field, BuildContext context) {
     return Expanded(
       child: Container(
-          margin: EdgeInsets.fromLTRB(3, 0, 20, 0),
+          margin: const EdgeInsets.fromLTRB(3, 0, 20, 0),
           height: 55,
           child: Align(
               alignment: Alignment.centerLeft,

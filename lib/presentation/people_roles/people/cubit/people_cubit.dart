@@ -28,13 +28,21 @@ class PeopleCubit extends HydratedCubit<PeopleState> {
   }
 
   filterPeople({required String filter, required String field}) {
-    List<Person> people = state.people
-        .where((p) => p
-            .toJson()[field]
-            .toString()
-            .toLowerCase()
-            .contains(filter.toLowerCase()))
-        .toList();
+    List<Person> people = state.people;
+    Map<String, String> searchvals = state.searchValues;
+    searchvals[field] = filter;
+    print("SEARCHVALS " + searchvals.toString());
+    emit(state.copyWith(searchValues: searchvals));
+    searchvals.forEach((key, value) {
+      people = people
+          .where((p) => p
+              .toJson()[key]
+              .toString()
+              .toLowerCase()
+              .contains(value.toLowerCase()))
+          .toList();
+    });
+
     people.sort((a, b) => a.surname!.compareTo(b.surname!));
     emit(state.copyWith(peopleFiltered: people));
   }

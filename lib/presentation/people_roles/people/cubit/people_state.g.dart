@@ -16,6 +16,10 @@ _$PeopleStateImpl _$$PeopleStateImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      searchValues: (json['searchValues'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as String),
+          ) ??
+          const {},
       status: $enumDecodeNullable(_$FutureStateEnumMap, json['status']) ??
           FutureState.initial,
     );
@@ -24,6 +28,7 @@ Map<String, dynamic> _$$PeopleStateImplToJson(_$PeopleStateImpl instance) =>
     <String, dynamic>{
       'people': instance.people,
       'peopleFiltered': instance.peopleFiltered,
+      'searchValues': instance.searchValues,
       'status': _$FutureStateEnumMap[instance.status]!,
     };
 

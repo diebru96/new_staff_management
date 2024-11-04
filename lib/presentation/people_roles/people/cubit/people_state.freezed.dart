@@ -22,6 +22,7 @@ PeopleState _$PeopleStateFromJson(Map<String, dynamic> json) {
 mixin _$PeopleState {
   List<Person> get people => throw _privateConstructorUsedError;
   List<Person> get peopleFiltered => throw _privateConstructorUsedError;
+  Map<String, String> get searchValues => throw _privateConstructorUsedError;
   FutureState get status => throw _privateConstructorUsedError;
 
   /// Serializes this PeopleState to a JSON map.
@@ -41,7 +42,10 @@ abstract class $PeopleStateCopyWith<$Res> {
       _$PeopleStateCopyWithImpl<$Res, PeopleState>;
   @useResult
   $Res call(
-      {List<Person> people, List<Person> peopleFiltered, FutureState status});
+      {List<Person> people,
+      List<Person> peopleFiltered,
+      Map<String, String> searchValues,
+      FutureState status});
 }
 
 /// @nodoc
@@ -61,6 +65,7 @@ class _$PeopleStateCopyWithImpl<$Res, $Val extends PeopleState>
   $Res call({
     Object? people = null,
     Object? peopleFiltered = null,
+    Object? searchValues = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -72,6 +77,10 @@ class _$PeopleStateCopyWithImpl<$Res, $Val extends PeopleState>
           ? _value.peopleFiltered
           : peopleFiltered // ignore: cast_nullable_to_non_nullable
               as List<Person>,
+      searchValues: null == searchValues
+          ? _value.searchValues
+          : searchValues // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -89,7 +98,10 @@ abstract class _$$PeopleStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Person> people, List<Person> peopleFiltered, FutureState status});
+      {List<Person> people,
+      List<Person> peopleFiltered,
+      Map<String, String> searchValues,
+      FutureState status});
 }
 
 /// @nodoc
@@ -107,6 +119,7 @@ class __$$PeopleStateImplCopyWithImpl<$Res>
   $Res call({
     Object? people = null,
     Object? peopleFiltered = null,
+    Object? searchValues = null,
     Object? status = null,
   }) {
     return _then(_$PeopleStateImpl(
@@ -118,6 +131,10 @@ class __$$PeopleStateImplCopyWithImpl<$Res>
           ? _value._peopleFiltered
           : peopleFiltered // ignore: cast_nullable_to_non_nullable
               as List<Person>,
+      searchValues: null == searchValues
+          ? _value._searchValues
+          : searchValues // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -132,9 +149,11 @@ class _$PeopleStateImpl implements _PeopleState {
   const _$PeopleStateImpl(
       {final List<Person> people = const [],
       final List<Person> peopleFiltered = const [],
+      final Map<String, String> searchValues = const {},
       this.status = FutureState.initial})
       : _people = people,
-        _peopleFiltered = peopleFiltered;
+        _peopleFiltered = peopleFiltered,
+        _searchValues = searchValues;
 
   factory _$PeopleStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$PeopleStateImplFromJson(json);
@@ -157,13 +176,22 @@ class _$PeopleStateImpl implements _PeopleState {
     return EqualUnmodifiableListView(_peopleFiltered);
   }
 
+  final Map<String, String> _searchValues;
+  @override
+  @JsonKey()
+  Map<String, String> get searchValues {
+    if (_searchValues is EqualUnmodifiableMapView) return _searchValues;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_searchValues);
+  }
+
   @override
   @JsonKey()
   final FutureState status;
 
   @override
   String toString() {
-    return 'PeopleState(people: $people, peopleFiltered: $peopleFiltered, status: $status)';
+    return 'PeopleState(people: $people, peopleFiltered: $peopleFiltered, searchValues: $searchValues, status: $status)';
   }
 
   @override
@@ -174,6 +202,8 @@ class _$PeopleStateImpl implements _PeopleState {
             const DeepCollectionEquality().equals(other._people, _people) &&
             const DeepCollectionEquality()
                 .equals(other._peopleFiltered, _peopleFiltered) &&
+            const DeepCollectionEquality()
+                .equals(other._searchValues, _searchValues) &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -183,6 +213,7 @@ class _$PeopleStateImpl implements _PeopleState {
       runtimeType,
       const DeepCollectionEquality().hash(_people),
       const DeepCollectionEquality().hash(_peopleFiltered),
+      const DeepCollectionEquality().hash(_searchValues),
       status);
 
   /// Create a copy of PeopleState
@@ -205,6 +236,7 @@ abstract class _PeopleState implements PeopleState {
   const factory _PeopleState(
       {final List<Person> people,
       final List<Person> peopleFiltered,
+      final Map<String, String> searchValues,
       final FutureState status}) = _$PeopleStateImpl;
 
   factory _PeopleState.fromJson(Map<String, dynamic> json) =
@@ -214,6 +246,8 @@ abstract class _PeopleState implements PeopleState {
   List<Person> get people;
   @override
   List<Person> get peopleFiltered;
+  @override
+  Map<String, String> get searchValues;
   @override
   FutureState get status;
 
