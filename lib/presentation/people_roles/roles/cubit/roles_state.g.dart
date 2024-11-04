@@ -8,9 +8,10 @@ part of 'roles_state.dart';
 
 _$RolesStateImpl _$$RolesStateImplFromJson(Map<String, dynamic> json) =>
     _$RolesStateImpl(
-      roles:
-          (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              const [],
+      roles: (json['roles'] as List<dynamic>?)
+              ?.map((e) => Role.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       status: $enumDecodeNullable(_$FutureStateEnumMap, json['status']) ??
           FutureState.initial,
     );

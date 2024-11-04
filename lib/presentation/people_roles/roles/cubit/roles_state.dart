@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:new_staff_management/common/helper/api_helpers/status.enum.dart';
+import 'package:new_staff_management/data/models/roles/role.dart';
 
 part 'roles_state.freezed.dart';
 part 'roles_state.g.dart';
@@ -7,7 +8,7 @@ part 'roles_state.g.dart';
 @freezed
 class RolesState with _$RolesState {
   const factory RolesState({
-    @Default([]) List<String> roles,
+    @Default([]) List<Role> roles,
     @Default(FutureState.initial) FutureState status,
   }) = _RolesState;
 

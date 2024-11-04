@@ -21,6 +21,7 @@ PeopleState _$PeopleStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PeopleState {
   List<Person> get people => throw _privateConstructorUsedError;
+  List<Person> get peopleFiltered => throw _privateConstructorUsedError;
   FutureState get status => throw _privateConstructorUsedError;
 
   /// Serializes this PeopleState to a JSON map.
@@ -39,7 +40,8 @@ abstract class $PeopleStateCopyWith<$Res> {
           PeopleState value, $Res Function(PeopleState) then) =
       _$PeopleStateCopyWithImpl<$Res, PeopleState>;
   @useResult
-  $Res call({List<Person> people, FutureState status});
+  $Res call(
+      {List<Person> people, List<Person> peopleFiltered, FutureState status});
 }
 
 /// @nodoc
@@ -58,12 +60,17 @@ class _$PeopleStateCopyWithImpl<$Res, $Val extends PeopleState>
   @override
   $Res call({
     Object? people = null,
+    Object? peopleFiltered = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
       people: null == people
           ? _value.people
           : people // ignore: cast_nullable_to_non_nullable
+              as List<Person>,
+      peopleFiltered: null == peopleFiltered
+          ? _value.peopleFiltered
+          : peopleFiltered // ignore: cast_nullable_to_non_nullable
               as List<Person>,
       status: null == status
           ? _value.status
@@ -81,7 +88,8 @@ abstract class _$$PeopleStateImplCopyWith<$Res>
       __$$PeopleStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Person> people, FutureState status});
+  $Res call(
+      {List<Person> people, List<Person> peopleFiltered, FutureState status});
 }
 
 /// @nodoc
@@ -98,12 +106,17 @@ class __$$PeopleStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? people = null,
+    Object? peopleFiltered = null,
     Object? status = null,
   }) {
     return _then(_$PeopleStateImpl(
       people: null == people
           ? _value._people
           : people // ignore: cast_nullable_to_non_nullable
+              as List<Person>,
+      peopleFiltered: null == peopleFiltered
+          ? _value._peopleFiltered
+          : peopleFiltered // ignore: cast_nullable_to_non_nullable
               as List<Person>,
       status: null == status
           ? _value.status
@@ -117,8 +130,11 @@ class __$$PeopleStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PeopleStateImpl implements _PeopleState {
   const _$PeopleStateImpl(
-      {final List<Person> people = const [], this.status = FutureState.initial})
-      : _people = people;
+      {final List<Person> people = const [],
+      final List<Person> peopleFiltered = const [],
+      this.status = FutureState.initial})
+      : _people = people,
+        _peopleFiltered = peopleFiltered;
 
   factory _$PeopleStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$PeopleStateImplFromJson(json);
@@ -132,13 +148,22 @@ class _$PeopleStateImpl implements _PeopleState {
     return EqualUnmodifiableListView(_people);
   }
 
+  final List<Person> _peopleFiltered;
+  @override
+  @JsonKey()
+  List<Person> get peopleFiltered {
+    if (_peopleFiltered is EqualUnmodifiableListView) return _peopleFiltered;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_peopleFiltered);
+  }
+
   @override
   @JsonKey()
   final FutureState status;
 
   @override
   String toString() {
-    return 'PeopleState(people: $people, status: $status)';
+    return 'PeopleState(people: $people, peopleFiltered: $peopleFiltered, status: $status)';
   }
 
   @override
@@ -147,13 +172,18 @@ class _$PeopleStateImpl implements _PeopleState {
         (other.runtimeType == runtimeType &&
             other is _$PeopleStateImpl &&
             const DeepCollectionEquality().equals(other._people, _people) &&
+            const DeepCollectionEquality()
+                .equals(other._peopleFiltered, _peopleFiltered) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_people), status);
+      runtimeType,
+      const DeepCollectionEquality().hash(_people),
+      const DeepCollectionEquality().hash(_peopleFiltered),
+      status);
 
   /// Create a copy of PeopleState
   /// with the given fields replaced by the non-null parameter values.
@@ -174,6 +204,7 @@ class _$PeopleStateImpl implements _PeopleState {
 abstract class _PeopleState implements PeopleState {
   const factory _PeopleState(
       {final List<Person> people,
+      final List<Person> peopleFiltered,
       final FutureState status}) = _$PeopleStateImpl;
 
   factory _PeopleState.fromJson(Map<String, dynamic> json) =
@@ -181,6 +212,8 @@ abstract class _PeopleState implements PeopleState {
 
   @override
   List<Person> get people;
+  @override
+  List<Person> get peopleFiltered;
   @override
   FutureState get status;
 

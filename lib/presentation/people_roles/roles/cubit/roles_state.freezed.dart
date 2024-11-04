@@ -20,7 +20,7 @@ RolesState _$RolesStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RolesState {
-  List<String> get roles => throw _privateConstructorUsedError;
+  List<Role> get roles => throw _privateConstructorUsedError;
   FutureState get status => throw _privateConstructorUsedError;
 
   /// Serializes this RolesState to a JSON map.
@@ -39,7 +39,7 @@ abstract class $RolesStateCopyWith<$Res> {
           RolesState value, $Res Function(RolesState) then) =
       _$RolesStateCopyWithImpl<$Res, RolesState>;
   @useResult
-  $Res call({List<String> roles, FutureState status});
+  $Res call({List<Role> roles, FutureState status});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$RolesStateCopyWithImpl<$Res, $Val extends RolesState>
       roles: null == roles
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Role>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -81,7 +81,7 @@ abstract class _$$RolesStateImplCopyWith<$Res>
       __$$RolesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> roles, FutureState status});
+  $Res call({List<Role> roles, FutureState status});
 }
 
 /// @nodoc
@@ -104,7 +104,7 @@ class __$$RolesStateImplCopyWithImpl<$Res>
       roles: null == roles
           ? _value._roles
           : roles // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Role>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -117,16 +117,16 @@ class __$$RolesStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RolesStateImpl implements _RolesState {
   const _$RolesStateImpl(
-      {final List<String> roles = const [], this.status = FutureState.initial})
+      {final List<Role> roles = const [], this.status = FutureState.initial})
       : _roles = roles;
 
   factory _$RolesStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$RolesStateImplFromJson(json);
 
-  final List<String> _roles;
+  final List<Role> _roles;
   @override
   @JsonKey()
-  List<String> get roles {
+  List<Role> get roles {
     if (_roles is EqualUnmodifiableListView) return _roles;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_roles);
@@ -173,13 +173,13 @@ class _$RolesStateImpl implements _RolesState {
 
 abstract class _RolesState implements RolesState {
   const factory _RolesState(
-      {final List<String> roles, final FutureState status}) = _$RolesStateImpl;
+      {final List<Role> roles, final FutureState status}) = _$RolesStateImpl;
 
   factory _RolesState.fromJson(Map<String, dynamic> json) =
       _$RolesStateImpl.fromJson;
 
   @override
-  List<String> get roles;
+  List<Role> get roles;
   @override
   FutureState get status;
 

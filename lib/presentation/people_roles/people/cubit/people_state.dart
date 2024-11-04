@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:new_staff_management/common/helper/api_helpers/status.enum.dart';
-import 'package:new_staff_management/presentation/people_roles/people/models/person.dart';
+import 'package:new_staff_management/data/models/people/person.dart';
 
 part 'people_state.freezed.dart';
 part 'people_state.g.dart';
@@ -9,6 +9,7 @@ part 'people_state.g.dart';
 class PeopleState with _$PeopleState {
   const factory PeopleState({
     @Default([]) List<Person> people,
+    @Default([]) List<Person> peopleFiltered,
     @Default(FutureState.initial) FutureState status,
   }) = _PeopleState;
 

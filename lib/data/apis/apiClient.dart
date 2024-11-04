@@ -14,4 +14,16 @@ class ApiClient {
     }
     return null;
   }
+
+  Future<List<dynamic>?> getRoles() async {
+    String path = "/1/roles";
+    try {
+      List<dynamic> res =
+          json.decode(await OldStandardApiCalls().standardGet(path));
+      return res;
+    } catch (e) {
+      print(e.toString());
+    }
+    return null;
+  }
 }

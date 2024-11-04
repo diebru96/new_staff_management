@@ -1,11 +1,9 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:new_staff_management/common/button/neumorphic_app_button.dart';
 import 'package:new_staff_management/common/styles/shadows.dart';
-import 'package:new_staff_management/core/configs/theme/app_colors.dart';
 import 'package:new_staff_management/shared/nav_bars/cubit/sidebar_cubit.dart';
 import 'package:new_staff_management/shared/nav_bars/cubit/sidebar_state.dart';
 import 'package:new_staff_management/shared/nav_bars/values/bar_values.dart';
