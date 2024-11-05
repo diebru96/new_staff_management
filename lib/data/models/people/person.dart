@@ -26,3 +26,22 @@ class Person with _$Person {
 
   factory Person.fromJson(Map<String, Object?> json) => _$PersonFromJson(json);
 }
+
+enum PersonField {
+  serialnumber,
+  address,
+  zipcode,
+  city,
+  prov,
+  fiscalcode,
+  id,
+  installationId,
+  name,
+  surname,
+  email,
+  available,
+  imported,
+  company,
+  isStaffUser,
+  userId,
+}

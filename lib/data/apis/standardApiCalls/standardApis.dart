@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:new_staff_management/common/helper/api_helpers/custom_exception.dart';
 
@@ -32,25 +34,25 @@ class OldStandardApiCalls {
     }
   }
 
-  standardPost(String path, body) {
+  standardPost(String path, Map<String, dynamic> body) {
     return http.post(
       Uri.parse(path),
       headers: <String, String>{
         "Content-Type": "application/json",
         'x-access-token': token,
       },
-      body: body,
+      body: json.encode(body),
     );
   }
 
-  standardPut(String path, body) {
+  standardPut(String path, Map<String, dynamic> body) {
     return http.put(
       Uri.parse(path),
       headers: <String, String>{
         "Content-Type": "application/json",
         'x-access-token': token,
       },
-      body: body,
+      body: json.encode(body),
     );
   }
 

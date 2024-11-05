@@ -21,7 +21,9 @@ RolesState _$RolesStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$RolesState {
   List<Role> get roles => throw _privateConstructorUsedError;
+  List<Role> get rolesFiltered => throw _privateConstructorUsedError;
   FutureState get status => throw _privateConstructorUsedError;
+  Map<String, String> get searchValues => throw _privateConstructorUsedError;
 
   /// Serializes this RolesState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +41,11 @@ abstract class $RolesStateCopyWith<$Res> {
           RolesState value, $Res Function(RolesState) then) =
       _$RolesStateCopyWithImpl<$Res, RolesState>;
   @useResult
-  $Res call({List<Role> roles, FutureState status});
+  $Res call(
+      {List<Role> roles,
+      List<Role> rolesFiltered,
+      FutureState status,
+      Map<String, String> searchValues});
 }
 
 /// @nodoc
@@ -58,17 +64,27 @@ class _$RolesStateCopyWithImpl<$Res, $Val extends RolesState>
   @override
   $Res call({
     Object? roles = null,
+    Object? rolesFiltered = null,
     Object? status = null,
+    Object? searchValues = null,
   }) {
     return _then(_value.copyWith(
       roles: null == roles
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
               as List<Role>,
+      rolesFiltered: null == rolesFiltered
+          ? _value.rolesFiltered
+          : rolesFiltered // ignore: cast_nullable_to_non_nullable
+              as List<Role>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FutureState,
+      searchValues: null == searchValues
+          ? _value.searchValues
+          : searchValues // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
     ) as $Val);
   }
 }
@@ -81,7 +97,11 @@ abstract class _$$RolesStateImplCopyWith<$Res>
       __$$RolesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Role> roles, FutureState status});
+  $Res call(
+      {List<Role> roles,
+      List<Role> rolesFiltered,
+      FutureState status,
+      Map<String, String> searchValues});
 }
 
 /// @nodoc
@@ -98,17 +118,27 @@ class __$$RolesStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? roles = null,
+    Object? rolesFiltered = null,
     Object? status = null,
+    Object? searchValues = null,
   }) {
     return _then(_$RolesStateImpl(
       roles: null == roles
           ? _value._roles
           : roles // ignore: cast_nullable_to_non_nullable
               as List<Role>,
+      rolesFiltered: null == rolesFiltered
+          ? _value._rolesFiltered
+          : rolesFiltered // ignore: cast_nullable_to_non_nullable
+              as List<Role>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FutureState,
+      searchValues: null == searchValues
+          ? _value._searchValues
+          : searchValues // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
     ));
   }
 }
@@ -117,8 +147,13 @@ class __$$RolesStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RolesStateImpl implements _RolesState {
   const _$RolesStateImpl(
-      {final List<Role> roles = const [], this.status = FutureState.initial})
-      : _roles = roles;
+      {final List<Role> roles = const [],
+      final List<Role> rolesFiltered = const [],
+      this.status = FutureState.initial,
+      final Map<String, String> searchValues = const {}})
+      : _roles = roles,
+        _rolesFiltered = rolesFiltered,
+        _searchValues = searchValues;
 
   factory _$RolesStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$RolesStateImplFromJson(json);
@@ -132,13 +167,30 @@ class _$RolesStateImpl implements _RolesState {
     return EqualUnmodifiableListView(_roles);
   }
 
+  final List<Role> _rolesFiltered;
+  @override
+  @JsonKey()
+  List<Role> get rolesFiltered {
+    if (_rolesFiltered is EqualUnmodifiableListView) return _rolesFiltered;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rolesFiltered);
+  }
+
   @override
   @JsonKey()
   final FutureState status;
+  final Map<String, String> _searchValues;
+  @override
+  @JsonKey()
+  Map<String, String> get searchValues {
+    if (_searchValues is EqualUnmodifiableMapView) return _searchValues;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_searchValues);
+  }
 
   @override
   String toString() {
-    return 'RolesState(roles: $roles, status: $status)';
+    return 'RolesState(roles: $roles, rolesFiltered: $rolesFiltered, status: $status, searchValues: $searchValues)';
   }
 
   @override
@@ -147,13 +199,21 @@ class _$RolesStateImpl implements _RolesState {
         (other.runtimeType == runtimeType &&
             other is _$RolesStateImpl &&
             const DeepCollectionEquality().equals(other._roles, _roles) &&
-            (identical(other.status, status) || other.status == status));
+            const DeepCollectionEquality()
+                .equals(other._rolesFiltered, _rolesFiltered) &&
+            (identical(other.status, status) || other.status == status) &&
+            const DeepCollectionEquality()
+                .equals(other._searchValues, _searchValues));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_roles), status);
+      runtimeType,
+      const DeepCollectionEquality().hash(_roles),
+      const DeepCollectionEquality().hash(_rolesFiltered),
+      status,
+      const DeepCollectionEquality().hash(_searchValues));
 
   /// Create a copy of RolesState
   /// with the given fields replaced by the non-null parameter values.
@@ -173,7 +233,10 @@ class _$RolesStateImpl implements _RolesState {
 
 abstract class _RolesState implements RolesState {
   const factory _RolesState(
-      {final List<Role> roles, final FutureState status}) = _$RolesStateImpl;
+      {final List<Role> roles,
+      final List<Role> rolesFiltered,
+      final FutureState status,
+      final Map<String, String> searchValues}) = _$RolesStateImpl;
 
   factory _RolesState.fromJson(Map<String, dynamic> json) =
       _$RolesStateImpl.fromJson;
@@ -181,7 +244,11 @@ abstract class _RolesState implements RolesState {
   @override
   List<Role> get roles;
   @override
+  List<Role> get rolesFiltered;
+  @override
   FutureState get status;
+  @override
+  Map<String, String> get searchValues;
 
   /// Create a copy of RolesState
   /// with the given fields replaced by the non-null parameter values.

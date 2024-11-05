@@ -12,14 +12,24 @@ _$RolesStateImpl _$$RolesStateImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => Role.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      rolesFiltered: (json['rolesFiltered'] as List<dynamic>?)
+              ?.map((e) => Role.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       status: $enumDecodeNullable(_$FutureStateEnumMap, json['status']) ??
           FutureState.initial,
+      searchValues: (json['searchValues'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as String),
+          ) ??
+          const {},
     );
 
 Map<String, dynamic> _$$RolesStateImplToJson(_$RolesStateImpl instance) =>
     <String, dynamic>{
       'roles': instance.roles,
+      'rolesFiltered': instance.rolesFiltered,
       'status': _$FutureStateEnumMap[instance.status]!,
+      'searchValues': instance.searchValues,
     };
 
 const _$FutureStateEnumMap = {

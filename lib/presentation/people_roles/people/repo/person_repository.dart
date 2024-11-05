@@ -10,4 +10,23 @@ class PersonRepository {
     }
     return [];
   }
+
+  Future<bool> savePerson(Person p) async {
+    if (p.id != null) {
+      final person = await apiClient.savePerson(p.id!, p.toJson());
+      if (person != null) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
+
+  Future<bool> createPerson(Person p) async {
+    final person = await apiClient.createPerson(p.toJson());
+    if (person != null) {
+      return true;
+    }
+    return false;
+  }
 }

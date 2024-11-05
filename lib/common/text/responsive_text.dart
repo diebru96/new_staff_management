@@ -6,11 +6,11 @@ class ResponsiveText extends StatelessWidget {
 
   ResponsiveText(this.text,
       {super.key,
-      this.baseFontSize = 16.0,
-      this.style = const TextStyle(fontSize: 16.0)});
-  TextStyle style = const TextStyle(fontSize: 16.0);
+      this.baseFontSize = 14.0,
+      this.style = const TextStyle(fontSize: 14.0)});
+  TextStyle style = const TextStyle(fontSize: 14.0);
   double baseWidth = 1700;
-  double baseFontSize = 16.0;
+  double baseFontSize = 14.0;
 
   @override
   Widget build(BuildContext context) {

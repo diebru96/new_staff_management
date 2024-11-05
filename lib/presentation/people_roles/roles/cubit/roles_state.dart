@@ -7,10 +7,11 @@ part 'roles_state.g.dart';
 
 @freezed
 class RolesState with _$RolesState {
-  const factory RolesState({
-    @Default([]) List<Role> roles,
-    @Default(FutureState.initial) FutureState status,
-  }) = _RolesState;
+  const factory RolesState(
+      {@Default([]) List<Role> roles,
+      @Default([]) List<Role> rolesFiltered,
+      @Default(FutureState.initial) FutureState status,
+      @Default({}) Map<String, String> searchValues}) = _RolesState;
 
   factory RolesState.fromJson(Map<String, Object?> json) =>
       _$RolesStateFromJson(json);

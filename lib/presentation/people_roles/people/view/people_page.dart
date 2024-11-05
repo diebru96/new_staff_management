@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_staff_management/core/configs/consts/layout_consts.dart';
 import 'package:new_staff_management/presentation/people_roles/people/cubit/people_cubit.dart';
-import 'package:new_staff_management/presentation/people_roles/people/view/people_page/people_page.mobile.dart';
-import 'package:new_staff_management/presentation/people_roles/people/view/people_page/people_page.web.dart';
+import 'package:new_staff_management/presentation/people_roles/people/view/people_page.mobile.dart';
+import 'package:new_staff_management/presentation/people_roles/people/view/people_page.web.dart';
 
 class PeoplePage extends StatefulWidget {
   const PeoplePage({super.key});

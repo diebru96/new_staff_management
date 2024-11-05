@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:new_staff_management/presentation/configurations_page/view/configurations_page.dart';
-import 'package:new_staff_management/presentation/people_roles/people/view/people_page/people_page.dart';
-import 'package:new_staff_management/presentation/people_roles/people/view/person_detail.dart';
+import 'package:new_staff_management/presentation/people_roles/people/view/people_page.dart';
+import 'package:new_staff_management/presentation/people_roles/people/person_detail/view/person_detail.dart';
 import 'package:new_staff_management/presentation/people_roles/people_roles_placeholder.dart';
 import 'package:new_staff_management/presentation/people_roles/people_roles_nested_nav.dart';
 import 'package:new_staff_management/presentation/people_roles/roles/view/roles_page.dart';
@@ -52,14 +52,6 @@ class GoRouteList {
             StatefulShellBranch(navigatorKey: _peopleRoleNavigatorKey, routes: [
               GoRoute(
                 path: 'people',
-                //pageBuilder: (context, state) => CustomTransitionPage(
-                //    child: const PeoplePage(),
-                //  transitionsBuilder: (BuildContext context,
-                //          Animation<double> animation,
-                //          Animation<double> secondaryAnimation,
-                //          Widget child) =>
-                //      CustomPageTransition.leftToRightTransition(
-                //          context, animation, secondaryAnimation, child)),
                 builder: (BuildContext context, GoRouterState state) {
                   return const PeoplePage();
                 },

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:new_staff_management/common/button/neumorphic_app_button.dart';
 import 'package:new_staff_management/common/helper/api_helpers/status.enum.dart';
-import 'package:new_staff_management/common/text/responsive_text.dart';
-import 'package:new_staff_management/core/configs/theme/app_colors.dart';
+import 'package:new_staff_management/common/input/search_field.dart';
+import 'package:new_staff_management/common/table/table_cell.dart';
 import 'package:new_staff_management/presentation/people_roles/people/cubit/people_cubit.dart';
 import 'package:new_staff_management/presentation/people_roles/people/cubit/people_state.dart';
 
@@ -23,7 +23,7 @@ class PeoplePageWeb extends StatelessWidget {
               FutureState.failure => const Text('Failed to fetch people'),
               FutureState.success => Column(
                   children: [
-                    header(context),
+                    header(context, state),
                     Expanded(
                       child: ListView.builder(
                         itemCount: state.peopleFiltered.length,
@@ -42,11 +42,11 @@ class PeoplePageWeb extends StatelessWidget {
                                   flex: 5,
                                   child: Row(
                                     children: [
-                                      cell(person.name ?? ""),
-                                      cell(person.surname ?? ""),
-                                      cell(person.company.toString()),
-                                      cell(person.email ?? ""),
-                                      cell(person.available.toString()),
+                                      Cell(person.name ?? ""),
+                                      Cell(person.surname ?? ""),
+                                      Cell(person.company.toString()),
+                                      Cell(person.email ?? ""),
+                                      Cell(person.available.toString()),
                                     ],
                                   ),
                                 ),
@@ -76,21 +76,7 @@ class PeoplePageWeb extends StatelessWidget {
         ));
   }
 
-  cell(String text) {
-    return Expanded(
-      child: Container(
-          margin: const EdgeInsets.fromLTRB(3, 0, 10, 0),
-          height: 70,
-          child: Align(
-              alignment: Alignment.centerLeft,
-              child: ResponsiveText(
-                text,
-                baseFontSize: 14,
-              ))),
-    );
-  }
-
-  header(BuildContext context) {
+  header(BuildContext context, PeopleState state) {
     return Container(
       margin: const EdgeInsets.fromLTRB(20.0, 0, 20, 0),
       decoration: const BoxDecoration(
@@ -103,11 +89,11 @@ class PeoplePageWeb extends StatelessWidget {
             flex: 5,
             child: Row(
               children: [
-                headerCell('Name', "name", context),
-                headerCell('Surname', "surname", context),
-                headerCell('Company', "company", context),
-                headerCell('Email', "email", context),
-                headerCell('Available', "available", context),
+                headerCell('Name', "name", context, state),
+                headerCell('Surname', "surname", context, state),
+                headerCell('Company', "company", context, state),
+                headerCell('Email', "email", context, state),
+                headerCell('Available', "available", context, state),
               ],
             ),
           ),
@@ -125,7 +111,8 @@ class PeoplePageWeb extends StatelessWidget {
     );
   }
 
-  headerCell(String text, String field, BuildContext context) {
+  headerCell(
+      String text, String field, BuildContext context, PeopleState state) {
     return Expanded(
       child: Container(
           margin: const EdgeInsets.fromLTRB(3, 0, 20, 0),
@@ -134,47 +121,11 @@ class PeoplePageWeb extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: SearchField(
                 title: text,
+                initialValue: state.searchValues[field],
                 onChanged: (value) => context
                     .read<PeopleCubit>()
                     .filterPeople(field: field, filter: value),
               ))),
-    );
-  }
-}
-
-class SearchField extends StatelessWidget {
-  const SearchField({super.key, required this.title, this.onChanged});
-  final String title;
-  final ValueChanged<String>? onChanged;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 2),
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: AppColors.lightTextColor)),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: title,
-                border: InputBorder.none,
-                hoverColor: AppColors.lightTextColor,
-                labelStyle: const TextStyle(color: AppColors.lightTextColor),
-                hintStyle: const TextStyle(color: AppColors.lightTextColor),
-              ),
-              onChanged: (value) =>
-                  onChanged != null ? onChanged!(value) : null,
-            ),
-          ),
-          const SizedBox(width: 8),
-          const Icon(
-            Icons.search,
-            color: AppColors.lightTextColor,
-          ),
-        ],
-      ),
     );
   }
 }
