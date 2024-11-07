@@ -9,6 +9,11 @@ part of 'person_state.dart';
 _$PersonStateImpl _$$PersonStateImplFromJson(Map<String, dynamic> json) =>
     _$PersonStateImpl(
       person: Person.fromJson(json['person'] as Map<String, dynamic>),
+      relationships: (json['relationships'] as List<dynamic>?)
+              ?.map(
+                  (e) => StaffRelationship.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       status: $enumDecodeNullable(_$FutureStateEnumMap, json['status']) ??
           FutureState.initial,
       inputValues: (json['inputValues'] as Map<String, dynamic>?)?.map(
@@ -20,6 +25,7 @@ _$PersonStateImpl _$$PersonStateImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$PersonStateImplToJson(_$PersonStateImpl instance) =>
     <String, dynamic>{
       'person': instance.person,
+      'relationships': instance.relationships,
       'status': _$FutureStateEnumMap[instance.status]!,
       'inputValues': instance.inputValues,
     };

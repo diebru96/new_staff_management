@@ -166,7 +166,8 @@ class __$$RoleImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _$RoleImpl implements _Role {
   const _$RoleImpl(
       {this.id,

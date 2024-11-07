@@ -60,13 +60,13 @@ class PersonPageWeb extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     personDetails(state, context),
-                    const Expanded(
-                      child: WorkRelationships(),
+                    Expanded(
+                      child: WorkRelationships(state: state),
                     ),
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 100,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,

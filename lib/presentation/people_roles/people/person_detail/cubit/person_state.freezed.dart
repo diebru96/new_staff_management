@@ -21,6 +21,8 @@ PersonState _$PersonStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PersonState {
   Person get person => throw _privateConstructorUsedError;
+  List<StaffRelationship> get relationships =>
+      throw _privateConstructorUsedError;
   FutureState get status => throw _privateConstructorUsedError;
   Map<String, String> get inputValues => throw _privateConstructorUsedError;
 
@@ -41,7 +43,10 @@ abstract class $PersonStateCopyWith<$Res> {
       _$PersonStateCopyWithImpl<$Res, PersonState>;
   @useResult
   $Res call(
-      {Person person, FutureState status, Map<String, String> inputValues});
+      {Person person,
+      List<StaffRelationship> relationships,
+      FutureState status,
+      Map<String, String> inputValues});
 
   $PersonCopyWith<$Res> get person;
 }
@@ -62,6 +67,7 @@ class _$PersonStateCopyWithImpl<$Res, $Val extends PersonState>
   @override
   $Res call({
     Object? person = null,
+    Object? relationships = null,
     Object? status = null,
     Object? inputValues = null,
   }) {
@@ -70,6 +76,10 @@ class _$PersonStateCopyWithImpl<$Res, $Val extends PersonState>
           ? _value.person
           : person // ignore: cast_nullable_to_non_nullable
               as Person,
+      relationships: null == relationships
+          ? _value.relationships
+          : relationships // ignore: cast_nullable_to_non_nullable
+              as List<StaffRelationship>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -101,7 +111,10 @@ abstract class _$$PersonStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Person person, FutureState status, Map<String, String> inputValues});
+      {Person person,
+      List<StaffRelationship> relationships,
+      FutureState status,
+      Map<String, String> inputValues});
 
   @override
   $PersonCopyWith<$Res> get person;
@@ -121,6 +134,7 @@ class __$$PersonStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? person = null,
+    Object? relationships = null,
     Object? status = null,
     Object? inputValues = null,
   }) {
@@ -129,6 +143,10 @@ class __$$PersonStateImplCopyWithImpl<$Res>
           ? _value.person
           : person // ignore: cast_nullable_to_non_nullable
               as Person,
+      relationships: null == relationships
+          ? _value._relationships
+          : relationships // ignore: cast_nullable_to_non_nullable
+              as List<StaffRelationship>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -146,15 +164,26 @@ class __$$PersonStateImplCopyWithImpl<$Res>
 class _$PersonStateImpl implements _PersonState {
   const _$PersonStateImpl(
       {required this.person,
+      final List<StaffRelationship> relationships = const [],
       this.status = FutureState.initial,
       final Map<String, String> inputValues = const {}})
-      : _inputValues = inputValues;
+      : _relationships = relationships,
+        _inputValues = inputValues;
 
   factory _$PersonStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$PersonStateImplFromJson(json);
 
   @override
   final Person person;
+  final List<StaffRelationship> _relationships;
+  @override
+  @JsonKey()
+  List<StaffRelationship> get relationships {
+    if (_relationships is EqualUnmodifiableListView) return _relationships;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_relationships);
+  }
+
   @override
   @JsonKey()
   final FutureState status;
@@ -169,7 +198,7 @@ class _$PersonStateImpl implements _PersonState {
 
   @override
   String toString() {
-    return 'PersonState(person: $person, status: $status, inputValues: $inputValues)';
+    return 'PersonState(person: $person, relationships: $relationships, status: $status, inputValues: $inputValues)';
   }
 
   @override
@@ -178,6 +207,8 @@ class _$PersonStateImpl implements _PersonState {
         (other.runtimeType == runtimeType &&
             other is _$PersonStateImpl &&
             (identical(other.person, person) || other.person == person) &&
+            const DeepCollectionEquality()
+                .equals(other._relationships, _relationships) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._inputValues, _inputValues));
@@ -185,7 +216,11 @@ class _$PersonStateImpl implements _PersonState {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, person, status,
+  int get hashCode => Object.hash(
+      runtimeType,
+      person,
+      const DeepCollectionEquality().hash(_relationships),
+      status,
       const DeepCollectionEquality().hash(_inputValues));
 
   /// Create a copy of PersonState
@@ -207,6 +242,7 @@ class _$PersonStateImpl implements _PersonState {
 abstract class _PersonState implements PersonState {
   const factory _PersonState(
       {required final Person person,
+      final List<StaffRelationship> relationships,
       final FutureState status,
       final Map<String, String> inputValues}) = _$PersonStateImpl;
 
@@ -215,6 +251,8 @@ abstract class _PersonState implements PersonState {
 
   @override
   Person get person;
+  @override
+  List<StaffRelationship> get relationships;
   @override
   FutureState get status;
   @override

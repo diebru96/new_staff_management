@@ -5,6 +5,8 @@ part 'person.g.dart';
 
 @freezed
 class Person with _$Person {
+  // ignore: invalid_annotation_target
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory Person({
     String? serialnumber,
     String? address,
@@ -25,23 +27,4 @@ class Person with _$Person {
   }) = _Person;
 
   factory Person.fromJson(Map<String, Object?> json) => _$PersonFromJson(json);
-}
-
-enum PersonField {
-  serialnumber,
-  address,
-  zipcode,
-  city,
-  prov,
-  fiscalcode,
-  id,
-  installationId,
-  name,
-  surname,
-  email,
-  available,
-  imported,
-  company,
-  isStaffUser,
-  userId,
 }

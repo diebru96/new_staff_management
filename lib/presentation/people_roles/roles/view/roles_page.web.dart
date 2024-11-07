@@ -4,7 +4,7 @@ import 'package:new_staff_management/common/button/neumorphic_app_button.dart';
 
 import 'package:new_staff_management/common/helper/api_helpers/status.enum.dart';
 import 'package:new_staff_management/common/input/search_field.dart';
-import 'package:new_staff_management/common/table/table_cell.dart';
+import 'package:new_staff_management/common/saetlist/view/table_cell.dart';
 import 'package:new_staff_management/presentation/people_roles/roles/cubit/roles_cubit.dart';
 import 'package:new_staff_management/presentation/people_roles/roles/cubit/roles_state.dart';
 

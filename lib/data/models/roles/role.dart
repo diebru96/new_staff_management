@@ -5,6 +5,8 @@ part 'role.g.dart';
 
 @freezed
 class Role with _$Role {
+  // ignore: invalid_annotation_target
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory Role(
       {int? id,
       int? installationId,

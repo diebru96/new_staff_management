@@ -297,7 +297,8 @@ class __$$PersonImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _$PersonImpl implements _Person {
   const _$PersonImpl(
       {this.serialnumber,
